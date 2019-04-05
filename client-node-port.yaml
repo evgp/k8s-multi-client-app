@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service # type of object for networking configuration
+metadata:
+  name: client-node-port
+spec:
+  type: NodePort
+  ports:
+   - port: 3050 # port for access to this POD from other POD (other objects)
+     targetPort: 3000 # refers to client-pod.yaml.containers.ports.containerPort definition, port inside the pod, we want open the traffic to. For any incoming traffic.
+     nodePort: 31515 # port to access our fibseq-client POD from browser, from outside world... always between 30000..32767 can be randomly assigned if not specified explicitly
+  selector:
+    component: web # < refers to label in client-pod.yaml cfg metadata.label.component: web
