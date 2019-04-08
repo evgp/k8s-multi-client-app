@@ -8,5 +8,5 @@ spec:
   containers: 
   - name: client
     image: eugocker/fibseq-client
-    ports: 
-     - containerPort: 3000
+#    ports: 
+#     - containerPort: 3000

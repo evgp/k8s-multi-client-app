@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-deployment
+spec:
+  replicas: 1 # the number of different pods, that this deployment is going to make
+  selector: 
+    matchLabels: # we're looking for particular labeled pod
+      component: web
+  template:   # configuration that should be used applied and maintained in this deployment
+    metadata:
+      labels: # multiple labels can be assigned to a pod
+        component: web # every pod that will be created by this deployment will have a label web
+    spec:
+      containers:
+        - name: client    # "-" array and will be have container with name client and following image
+          image: eugocker/fibseq-client
+          ports:
+            - containerPort: 3000
