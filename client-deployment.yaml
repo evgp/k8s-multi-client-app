@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: client-deployment
 spec:
-  replicas: 1 # the number of different pods, that this deployment is going to make
+  replicas: 5 # the number of different pods, that this deployment is going to make
   selector: 
     matchLabels: # we're looking for particular labeled pod
       component: web
@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: client    # "-" array and will be have container with name client and following image
-          image: eugocker/fibseq-client
+          image: eugocker/fibseq-worker
           ports:
             - containerPort: 3000
